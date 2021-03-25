@@ -1,12 +1,18 @@
 public class Client extends Thread {
 
-    Bank bank;
-    int slp;
+    private Bank bank;
+    private int slp;
+    private int percent;
 
-    Client(String name, Bank bank, int slp) {
+    Client(String name, Bank bank, int slp, int percent) {
         super(name);
         this.bank = bank;
         this.slp = slp;
+        this.percent = percent;
+    }
+
+    int getPercent() {
+        return percent;
     }
 
     public void run() {
@@ -15,7 +21,7 @@ public class Client extends Thread {
             try {
                 System.out.println(this.getName() + "-взял: " + bank.takeMoney(1000));
                 Thread.sleep(slp);
-                System.out.println(this.getName() + "-вернул: " + bank.returnMoney(1000));
+                System.out.println(this.getName() + "-вернул: " + bank.returnMoney(this, 1000));
                 Thread.sleep(slp);
                 System.out.println("баланс банка: " + bank.getMoney());
 

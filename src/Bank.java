@@ -1,9 +1,14 @@
+import java.util.ArrayList;
+
 public class Bank {
 
+    ArrayList<Client> baseClients = new ArrayList<>();
+
     Bank() {
-        new Client("Иванов", this, 100).start();
-        new Client("Петров", this, 200).start();
-        new Client("Сидоров", this, 300).start();
+        baseClients.add(new Client("Иванов", this, 100, 10));
+        baseClients.add(new Client("Петров", this, 200, 20));
+        baseClients.add(new Client("Сидоров", this, 300, 30));
+        baseClients.forEach(Client::start);
     }
 
     private static int money = 10000;
@@ -13,7 +18,8 @@ public class Bank {
         return money;
     }
 
-    synchronized int returnMoney(int money) {
+    synchronized int returnMoney(Client client, int money) {
+        money = (money + ((money / 100) * client.getPercent()));
         Bank.money += money;
         return money;
     }
@@ -21,4 +27,6 @@ public class Bank {
     int getMoney() {
         return Bank.money;
     }
+
+
 }
