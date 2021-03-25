@@ -5,11 +5,6 @@ public class Main {
 
         Bank bank = new Bank();
 
-//        while (true) {
-//            System.out.println(bank.getMoney());
-//            Thread.sleep(1000);
-//        }
-
 
     }
 

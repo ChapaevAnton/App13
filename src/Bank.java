@@ -1,22 +1,24 @@
 public class Bank {
 
-    Bank(){
-        new Client("Иванов",this,1).start();
-        new Client("Петров",this,1).start();
-        new Client("Сидоров",this,1).start();
+    Bank() {
+        new Client("Иванов", this, 1).start();
+        new Client("Петров", this, 1).start();
+        new Client("Сидоров", this, 1).start();
     }
 
-    private int money = 10000;
+    private static int money = 10000;
 
-    void takeMoney(int money) {
-        this.money -= money;
+    int takeMoney(int money) {
+        Bank.money -= money;
+        return money;
     }
 
-    void returnMoney(int money) {
-        this.money += money;
+    int returnMoney(int money) {
+        Bank.money += money;
+        return money;
     }
 
     int getMoney() {
-        return this.money;
+        return Bank.money;
     }
 }

@@ -13,11 +13,12 @@ public class Client extends Thread {
         while (true) {
 
             try {
-                bank.takeMoney(1000);
-                bank.returnMoney(1000);
-                System.out.println(this.getName());
-                System.out.println(bank.getMoney());
+                System.out.println(this.getName() + "-взял: " + bank.takeMoney(1000));
                 Thread.sleep(slp);
+                System.out.println(this.getName() + "-вернул: " + bank.returnMoney(1000));
+                Thread.sleep(slp);
+                System.out.println("баланс банка: " + bank.getMoney());
+
             } catch (InterruptedException err) {
                 err.printStackTrace();
             }
