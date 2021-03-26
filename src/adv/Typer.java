@@ -2,21 +2,19 @@ package adv;
 
 public class Typer extends Thread {
 
-    static StringBuilder builder = new StringBuilder();
+    String adv;
 
-    char[] adv;
+    static Character item = Character.MIN_VALUE;
 
     Typer(String adv) {
-        this.adv = adv.toCharArray();
+        this.adv = adv;
     }
 
     public void run() {
-        getAdv();
-    }
 
-    private void getAdv()  {
-        synchronized (builder) {
-            for (char item : adv) {
+        synchronized (item) {
+            for (int i = 0; i < adv.length(); i++) {
+                item = adv.charAt(i);
                 System.out.print(item);
                 try {
                     Thread.sleep(500);
@@ -24,8 +22,9 @@ public class Typer extends Thread {
                     err.printStackTrace();
                     break;
                 }
-                builder.append(item);
             }
         }
     }
+
 }
+
