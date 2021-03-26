@@ -9,13 +9,11 @@ public class Main {
 
         Adv adv =  new Adv("Message first. Message second. ");
 
-
         Thread thread1 = new Typer(adv);
         Thread thread2 = new Typer(adv);
         thread1.start();
-        //thread1.join();
         thread2.start();
-        //thread2.join();
+
 
 
     }
