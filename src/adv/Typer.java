@@ -2,7 +2,7 @@ package adv;
 
 public class Typer extends Thread {
 
-    Adv adv;
+    static Adv adv;
 
 
     Typer(Adv adv) {
@@ -10,9 +10,21 @@ public class Typer extends Thread {
     }
 
     public void run() {
+        getAdv(adv);
 
-        adv.getAdv();
+    }
 
+    public void getAdv(Adv adv) {
+        synchronized (adv) {
+            for (int i = 0; i < adv.getStr().length(); i++) {
+                System.out.print(adv.getStr().charAt(i));
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException err) {
+                    err.printStackTrace();
+                }
+            }
+        }
     }
 
 }
