@@ -1,5 +1,9 @@
 package fox;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 // TODO: 27.03.2021 13.5 deadlock on
 class Watter {
 }
@@ -52,12 +56,17 @@ public class Fox {
         Fox fox1 = new Fox();
         Fox fox2 = new Fox();
 
-        Thread thread = new Thread(() -> fox1.ettFood(watter, food));
-        Thread thread1 = new Thread(() -> fox2.foodEtt(watter, food));
+//        Thread thread = new Thread(() -> fox1.ettFood(watter, food));
+//        Thread thread1 = new Thread(() -> fox2.foodEtt(watter, food));
+//        thread.start();
+//        thread1.start();
 
-        thread.start();
-        thread1.start();
+        // TODO: 27.03.2021 13.5
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        executorService.execute(()->fox1.foodEtt(watter,food));
+        executorService.execute(()->fox2.ettFood(watter,food));
 
+        executorService.shutdown();
 
     }
 }

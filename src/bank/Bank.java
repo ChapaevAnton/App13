@@ -7,17 +7,63 @@ public class Bank {
     ArrayList<Client> baseClients = new ArrayList<>();
 
     Bank() {
-        baseClients.add(new Client("Иванов", this, 100, 10));
-        baseClients.add(new Client("Петров", this, 200, 20));
-        baseClients.add(new Client("Сидоров", this, 300, 30));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Иванов", this, 10, 0));
+        baseClients.add(new Client("Петров", this, 10, 0));
+        baseClients.add(new Client("Петров", this, 10, 0));
+        baseClients.add(new Client("Петров", this, 10, 0));
+        baseClients.add(new Client("Петров", this, 10, 0));
+        baseClients.add(new Client("Петров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
+        baseClients.add(new Client("Сидоров", this, 10, 0));
         baseClients.forEach(Client::start);
     }
 
     private static int money = 10000;
 
     synchronized int takeMoney(int money) {
-        Bank.money -= money;
-        return money;
+        if (getMoney() >= 0) {
+            Bank.money -= money;
+            return money;
+        }
+        return 0;
     }
 
     synchronized int returnMoney(Client client, int money) {
