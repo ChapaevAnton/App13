@@ -44,7 +44,7 @@ public class Pizzeria {
                     break;
                 }
                 if (order != null) {
-                    if (System.currentTimeMillis() + 500 - START_TIME <= 750) {
+                    if (System.currentTimeMillis() + 500 - order.orderTime <= 750) {
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
@@ -68,7 +68,7 @@ public class Pizzeria {
         try {
             listOrder.put(new Order(pizzaName, System.currentTimeMillis()));
         } catch (InterruptedException err) {
-            err.printStackTrace();
+            return;
         }
     }
 
