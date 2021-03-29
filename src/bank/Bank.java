@@ -23,6 +23,14 @@ public class Bank {
         baseClients.add(new Client("Сидоров", this, 10, 0));
         baseClients.add(new Client("Сидоров", this, 10, 0));
         baseClients.forEach(Client::start);
+
+        for (Client client : baseClients) {
+            try {
+                client.join();
+            } catch (InterruptedException err) {
+                err.printStackTrace();
+            }
+        }
     }
 
     // TODO: 29.03.2021 13.6
