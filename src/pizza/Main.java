@@ -12,6 +12,10 @@ public class Main {
         pizzeria.order("Sicilian");
         Thread.sleep(100);
         pizzeria.order("Greek");
-    }
+        Thread.sleep(100);
+        pizzeria.order("Greek");
+        Thread.sleep(100);
 
+
+    }
 }
