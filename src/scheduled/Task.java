@@ -19,9 +19,12 @@ class Task {
         Runnable canceller = () -> {
             beeperHandle.cancel(false);
             System.out.println("Stop");
+            if (beeperHandle.isCancelled()) scheduler.shutdown();
         };
 
         scheduler.schedule(canceller, delayStop, TimeUnit.SECONDS);
+
+
 
     }
 }
